@@ -133,16 +133,18 @@ timespec_from_ns(const int64_t nsec)
 }
 
 static inline struct timespec
-timespec_add(struct timespec a, struct timespec b)
+timespec_add(struct timespec *a, struct timespec *b)
 {
-	return timespec_normalize(a.tv_sec + b.tv_sec, a.tv_nsec + b.tv_nsec);
+	return timespec_normalize(a->tv_sec + b->tv_sec,
+	                          a->tv_nsec + b->tv_nsec);
 }
 
 /* return a - b */
 static inline struct timespec
-timespec_sub(struct timespec a, struct timespec b)
+timespec_sub(struct timespec *a, struct timespec *b)
 {
-	return timespec_normalize(a.tv_sec - b.tv_sec, a.tv_nsec - b.tv_nsec);
+	return timespec_normalize(a->tv_sec - b->tv_sec,
+	                          a->tv_nsec - b->tv_nsec);
 }
 
 static inline void
