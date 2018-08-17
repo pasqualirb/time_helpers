@@ -107,23 +107,23 @@ timespec_compare(const struct timespec *a, const struct timespec *b)
 
 /* Return 1 if timespec is valid, 0 otherwise. */
 static inline int
-timespec_is_valid(const struct timespec *ts)
+timespec_is_valid(const struct timespec *t)
 {
 	/* second must be greater or equal zero */
-	if (ts->tv_sec < 0)
+	if (t->tv_sec < 0)
 		return 0;
 
 	/* nanosecond must be less than a second */
-	if ((unsigned long) ts->tv_nsec >= NSEC_PER_SEC)
+	if ((unsigned long) t->tv_nsec >= NSEC_PER_SEC)
 		return 0;
 
 	return 1;
 }
 
 static inline int64_t
-timespec_to_ns(const struct timespec *ts)
+timespec_to_ns(const struct timespec *t)
 {
-	return ((int64_t) ts->tv_sec * NSEC_PER_SEC) + ts->tv_nsec;
+	return ((int64_t) t->tv_sec * NSEC_PER_SEC) + t->tv_nsec;
 }
 
 static inline struct timespec
