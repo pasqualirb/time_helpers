@@ -148,13 +148,13 @@ timespec_sub(struct timespec a, struct timespec b)
 static inline void
 timespec_add_ns(struct timespec *t, uint64_t nsec)
 {
-	*t = timespec_normalize(a->tv_sec, a->tv_nsec + nsec);
+	*t = timespec_normalize(t->tv_sec, t->tv_nsec + nsec);
 }
 
 static inline void
 timespec_sub_ns(struct timespec *t, uint64_t nsec)
 {
-	*t = timespec_normalize(a->tv_sec, a->tv_nsec - nsec);
+	*t = timespec_normalize(t->tv_sec, t->tv_nsec - nsec);
 }
 
 #endif /* TIME_HELPERS_H */
