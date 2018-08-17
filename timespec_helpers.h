@@ -105,19 +105,19 @@ timespec_compare(const struct timespec *a, const struct timespec *b)
 	return a->tv_nsec - b->tv_nsec;
 }
 
-/* Return true if timespec is valid, false otherwise. */
-static inline bool
+/* Return 1 if timespec is valid, 0 otherwise. */
+static inline int
 timespec_is_valid(const struct timespec *ts)
 {
 	/* second must be greater or equal zero */
 	if (ts->tv_sec < 0)
-		return false;
+		return 0;
 
 	/* nanosecond must be less than a second */
 	if ((unsigned long) ts->tv_nsec >= NSEC_PER_SEC)
-		return false;
+		return 0;
 
-	return true;
+	return 1;
 }
 
 static inline int64_t
